@@ -1,3 +1,4 @@
+#[inline(always)]
 pub fn sort<A: PartialOrd>(a: A, b: A) -> (A, A) {
     if PartialOrd::partial_cmp(&a, &b) == Some(std::cmp::Ordering::Less) {
         (a, b)
