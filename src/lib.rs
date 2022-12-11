@@ -1,4 +1,4 @@
-use std::{cmp::Ordering};
+use std::cmp::Ordering;
 
 #[inline(always)]
 pub fn sort<A: PartialOrd>(a: A, b: A) -> (A, A) {
@@ -7,11 +7,15 @@ pub fn sort<A: PartialOrd>(a: A, b: A) -> (A, A) {
     // } else {
     //     (b, a)
     // }
-    sort_by(|a, b| PartialOrd::partial_cmp(a, b) == Some(Ordering::Less), a, b)
+    sort_by(
+        |a, b| PartialOrd::partial_cmp(a, b) == Some(Ordering::Less),
+        a,
+        b,
+    )
 }
 
 #[inline]
-pub fn sort_by<'a, F, A>(f: F, a: A, b: A) -> (A, A)
+pub fn sort_by<F, A>(f: F, a: A, b: A) -> (A, A)
 where
     F: FnOnce(&A, &A) -> bool,
 {
